@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CineStory AI — Realistic Video Maker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top"><a class="logo" href="#"><span>◈</span> CineStory <small>AI STUDIO</small></a><div class="topright"><span class="dot"></span> Browser studio <button id="help" class="outline">How it works</button></div></header>
+<main class="app">
+<aside class="panel">
+  <div class="kicker">NEW PROJECT</div><h1>Create your story video</h1>
+  <label for="story">Story / Script</label>
+  <textarea id="story" rows="9" placeholder="अपनी कहानी यहाँ लिखें...">एक छोटे से गाँव में राधा अपनी दादी के साथ रहती थी। एक दिन गाँव में तेज बारिश शुरू हो गई और नदी का पानी बढ़ने लगा। राधा ने देखा कि एक छोटा पिल्ला नदी के किनारे फँसा हुआ है। उसने गाँव के लोगों को बुलाया और सबने मिलकर पिल्ले को सुरक्षित बाहर निकाल लिया। दादी ने राधा की बहादुरी की तारीफ की। उस दिन राधा ने सीखा कि मिलकर काम करने से बड़ी मुश्किल भी आसान हो जाती है।</textarea>
+  <div class="two">
+    <div><label for="format">Video format</label><select id="format"><option value="landscape">YouTube 16:9</option><option value="portrait">Shorts / Reels 9:16</option></select></div>
+    <div><label for="lang">Voice language</label><select id="lang"><option value="hi-IN">Hindi</option><option value="en-US">English</option></select></div>
+  </div>
+  <label for="look">Visual mood</label><select id="look"><option value="cinematic">Realistic cinematic</option><option value="warm">Warm family drama</option><option value="documentary">Documentary style</option><option value="thriller">Suspense / thriller</option></select>
+  <button id="make" class="mainbtn">✦ Create storyboard</button>
+  <p class="note">Your script is split into scenes. Add a photo or image to each scene, then export your video.</p>
+  <div class="divider"></div>
+  <div class="kicker row"><span>SCENES</span><b id="count">0</b></div><div id="sceneList" class="scene-list"><p class="muted">Your scenes will appear here.</p></div>
+</aside>
+<section class="work">
+ <div class="workhead"><div><div class="kicker">VIDEO WORKSPACE</div><h2 id="title">Untitled story</h2></div><div class="actions"><button id="play" class="secondary" disabled>▶ Preview</button><button id="export" class="mainbtn" disabled>Export MP4</button></div></div>
+ <div class="preview" id="preview">
+  <canvas id="canvas" width="1280" height="720"></canvas>
+  <div class="preview-empty" id="empty">Your cinematic story preview appears here</div>
+  <div class="preview-caption" id="caption">Create a storyboard to begin</div>
+  <div class="controls"><button id="back">‹</button><span id="sceneNo">Scene 0 / 0</span><button id="forward">›</button></div>
+ </div>
+ <div class="scene-head"><b>SCENE EDITOR</b><span id="sceneHint">Select a scene to edit its visual</span></div>
+ <div class="editor">
+  <div class="thumb" id="thumb">No image selected</div>
+  <div class="editfields"><label for="prompt">Visual prompt / shot description</label><textarea id="prompt" rows="3" placeholder="Describe what this scene should look like..."></textarea>
+   <div class="editbuttons"><label class="upload">＋ Add scene image<input id="imageUpload" type="file" accept="image/*" hidden></label><button id="speak" class="secondary">🔊 Hear narration</button></div>
+  </div>
+ </div>
+ <div class="scene-head"><b>EXPORT SETTINGS</b><span>MP4 video</span></div>
+ <div class="exportbox"><label class="upload">＋ Add background music (optional)<input id="music" type="file" accept="audio/*" hidden></label><span id="musicName" class="muted">No music selected</span><span class="muted">MP4 conversion runs in your browser and may take time on phones.</span></div>
+ <div id="status" class="status">Ready. Create a storyboard to get started.</div>
+</section>
+</main>
+<dialog id="helpDialog"><h2>How CineStory works</h2><p>1. Write a story and create a storyboard. 2. Select each scene and add a photo or generated image. 3. Preview the sequence, then export MP4.</p><p><b>Honest limitation:</b> this starter version automatically creates scene breakdowns and cinematic prompts, but does not generate realistic AI images or moving AI footage by itself. Add your own images for each scene. Connecting a real image/video generation provider requires its API and a secure backend.</p><p>MP4 conversion uses FFmpeg.wasm downloaded from a CDN. The exported video includes visuals and optional background music. Browser text-to-speech is for preview and is not embedded in the exported file.</p><button id="closeHelp" class="mainbtn">Got it</button></dialog>
+<script type="module" src="app.js"></script>
+</body></html>
